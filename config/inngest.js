@@ -2,7 +2,7 @@ import { Inngest } from "inngest";
 import connectDB from "./db";
 
 // Create a client to send and receive events
-export const inngest = new Inngest({ id: "my-app" });
+export const inngest = new Inngest({ id: "Quicwtcart-next" });
 
 
 
@@ -13,7 +13,7 @@ export const syncUserCreation = inngest.createFunction(
    {
       event: 'clerk/user.created'
    },
-   async({envent}) => {
+   async({event}) => {
       const {id, first_name, last_name, email_addresses, image_url} = event.data
       const userData = {
          _id:id,
@@ -33,7 +33,7 @@ export const syncUserUpdation = inngest.createFunction(
       id: 'update-user-from-clerk'
    },
    {event: 'clerk/user.updated'},
-   async({etven}) => {
+   async({event}) => {
       const {id, first_name, last_name, email_addresses, image_url} = event.data
       const userData = {
          _id:id,
@@ -49,7 +49,7 @@ export const syncUserUpdation = inngest.createFunction(
 //ingresas function
 export const syncUserDeletion = inngest.createFunction(
    {
-      id: 'delete-user-wih-clerk'
+      id: 'delete-user-with-clerk'
    },
    {event: 'clek/user.deleted'},
    async({event}) =>{
